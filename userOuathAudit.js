@@ -6,7 +6,6 @@ function reset() {
   main()
 }
 
-
 function main(){
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Applications")
   const scriptProperties = PropertiesService.getScriptProperties()
@@ -21,7 +20,7 @@ function main(){
       const response = AdminDirectory.Users.list({domain:"my_customer", pageToken});
 
       response.users.forEach(user => {
-        //skip over suspended users
+        // Skip over suspended users
         if (user.suspended) return
 
         const userData = getAppRows(user)
@@ -54,23 +53,23 @@ function getAppRows(user) {
   const apps = AdminDirectory.Tokens.list(user.primaryEmail).items;
   if(apps == null) return;
 
-  // setup an Application dictionary to handle multiple application entries
+  // Setup an Application dictionary to handle multiple application entries
   const appMap = {}
   const output = []
 
   apps.forEach(app => {
-    //create key for app if it doesn't exist. Store all data about the app and all of the scopes over every instance
+    // Create key for app if it doesn't exist. Store all data about the app and all of the scopes over every instance
     if(!appMap[app.displayText]) appMap[app.displayText] = {scopesList: [], app}
 
-    //Since we can come across the same application we add all scopes from every instance to the scopes list
+    // Since we can come across the same application we add all scopes from every instance to the scopes list
     app.scopes.forEach(scope => appMap[app.displayText].scopesList.push(scope))
   })
 
-  //itterate through each app
+  // Itterate through each app
   Object.keys(appMap).forEach(appName => {
     const {app, scopesList} = appMap[appName]
 
-    //filter down to unique list then itterate through each scope
+    // Filter down to unique list then itterate through each scope
     scopesList
     .filter(onlyUnique)
     .forEach(scope => {
