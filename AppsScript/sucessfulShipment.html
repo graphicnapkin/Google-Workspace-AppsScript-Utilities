@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body style="margin: 0; background: #d8d8d8">
+        <table
+            style="
+                background: #d8d8d8;
+                margin: 10px auto;
+                max-width: 640px;
+                font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial,
+                    sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: #4a4a4a;
+                width: 100%;
+                border-spacing: 0;
+                background: white;
+                margin-bottom: 35px;
+            "
+        >
+            <tr>
+                <th
+                    style="
+                        border-bottom: 1px solid #1da1f2;
+                        padding: 50px 0 15px 0;
+                        text-align: center;
+                    "
+                >
+                    <img alt="yubico" width="168" src="<PUBLIC_URL_TO_LOGO>" />
+                </th>
+            </tr>
+            <tr>
+                <td style="padding: 25px">
+                    <h1
+                        style="
+                            color: #325f74;
+                            font-weight: bold;
+                            font-size: 28px;
+                            text-align: center;
+                            margin: 10px 0;
+                            mso-line-height-rule: exactly;
+                        "
+                    >
+                        Your YubiKey Order is Processing!
+                    </h1>
+                    <p style="margin: 20px 0; line-height: 22px">
+                        Hello
+                        <?=shipmentInfo.recipient?>,
+                    </p>
+                    <p style="margin: 20px 0; line-height: 22px">
+                        Your YubiKey order is being processed. Please allow 5-7
+                        days for processing to complete. You will receive an
+                        email from no-reply@yubico.com when the order has been
+                        shipped with a tracking number.
+                    </p>
+                    <div style="margin: 20px 0; line-height: 22px">
+                        Delivering To:<br />
+                        <blockquote>
+                            <?=shipmentInfo.recipient?><br />
+                            <?=shipmentInfo.street_line1?><br />
+                            <?=shipmentInfo.street_line2 || ''?><br />
+                            <?=shipmentInfo.street_line3 || ''?><br />
+                            <?=shipmentInfo.city || ''?><br />
+                            <?=shipmentInfo.region || ''?><br />
+                            <?=shipmentInfo.zip_code || shipmentInfo.postal_code ?>
+                        </blockquote>
+                    </div>
+                    <div
+                        style="
+                            margin: 20px 0;
+                            line-height: 22px;
+                            text-align: center;
+                            margin-bottom: 100px;
+                        "
+                    >
+                        <p>
+                            <b
+                                >Click below to cancel shipment within 60
+                                minutes if there is an issue with the address
+                                listed above.</b
+                            >
+                        </p>
+                        <span
+                            style="
+                                box-shadow: inset 0px 1px 0px 0px #cf866c;
+                                background: linear-gradient(
+                                    to bottom,
+                                    #d0451b 5%,
+                                    #bc3315 100%
+                                );
+                                background-color: #d0451b;
+                                border-radius: 3px;
+                                border: 1px solid #942911;
+                                display: inline-block;
+                                cursor: pointer;
+                                font-family: Arial;
+                                font-size: 13px;
+                                padding: 3px 12px;
+                                text-decoration: none;
+                                text-shadow: 0px 1px 0px #854629;
+                            "
+                        >
+                            <a
+                                style="
+                                    margin-top: 100px;
+                                    text-decoration: none;
+                                    color: #ffffff;
+                                "
+                                href="<?= deleteLink ?>"
+                            >
+                                Cancel
+                            </a>
+                        </span>
+                    </div>
+                    <p style="margin: 20px 0; line-height: 22px">
+                        Sincerely,<br />
+                        - Your IT Team
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="
+                        border-top: 1px solid #d8d8d8;
+                        padding: 25px;
+                        line-height: 22px;
+                    "
+                >
+                    This is an automatically generated message from IT. Replies
+                    are not monitored.
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="
+                        color: #4a4a4a;
+                        background: #d8d8d8;
+                        text-align: center;
+                        font-size: 14px;
+                        line-height: 22px;
+                        padding-bottom: 40px;
+                        padding-top: 40px;
+                    "
+                ></td>
+            </tr>
+        </table>
+    </body>
+</html>

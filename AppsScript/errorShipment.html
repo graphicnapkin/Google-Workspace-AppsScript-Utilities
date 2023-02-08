@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body style="margin: 0; background: #d8d8d8">
+        <table
+            style="
+                background: #d8d8d8;
+                margin: 10px auto;
+                max-width: 640px;
+                font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial,
+                    sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: #4a4a4a;
+                width: 100%;
+                border-spacing: 0;
+                background: white;
+                margin-bottom: 35px;
+            "
+        >
+            <tr>
+                <th
+                    style="
+                        border-bottom: 1px solid #1da1f2;
+                        padding: 50px 0 15px 0;
+                        text-align: center;
+                    "
+                >
+                    <img alt="yubico" width="168" src="<PUBLIC_URL_TO_LOGO>" />
+                </th>
+            </tr>
+            <tr>
+                <td style="padding: 25px">
+                    <h1
+                        style="
+                            color: #bd0000;
+                            font-weight: bold;
+                            font-size: 28px;
+                            text-align: center;
+                            margin: 10px 0;
+                            mso-line-height-rule: exactly;
+                        "
+                    >
+                        Error Processing Order
+                    </h1>
+                    <p style="margin: 20px 0; line-height: 22px">
+                        Hello
+                        <?=shipmentInfo['Legal First Name'][0]?>,
+                    </p>
+                    <p style="margin: 20px 0; line-height: 22px">
+                        Your order has failed to process.<br />
+                        <br />
+                        <?=error?>
+                    </p>
+                    <p style="margin: 20px 0; line-height: 22px">
+                        <b>Address Submitted:</b><br />
+                    </p>
+                    <ul>
+                        <li>
+                            Recipient:
+                            <?=`${shipmentInfo['Legal First Name'][0]} ${shipmentInfo['Legal Last Name'][0]}` || ''?>
+                        </li>
+                        <li>
+                            Address Line 1:
+                            <?=shipmentInfo['Address Line 1'][0] || ''?>
+                        </li>
+                        <li>
+                            Address Line 2:
+                            <?=shipmentInfo['Address Line 2'][0] || ''?>
+                        </li>
+                        <li>
+                            Address Line 3:
+                            <?=shipmentInfo['Address Line 3'][0] || ''?>
+                        </li>
+                        <li>
+                            City:
+                            <?=shipmentInfo['City / Locality / Postal Town'][0] || ''?>
+                        </li>
+                        <li>
+                            State:
+                            <?=shipmentInfo['State or Province'][0] || ''?>
+                        </li>
+                        <li>
+                            Zip/Postalcode:
+                            <?=shipmentInfo['ZIP or Postal Code'][0] || ''?>
+                        </li>
+                        <li>
+                            Phone Number:
+                            <?=shipmentInfo['Contact Phone Number'][0] || ''?>
+                        </li>
+                    </ul>
+                    <p>
+                        If there was a typo in the submitted form, Resubmit a
+                        <b>
+                            <a
+                                href="https://docs.google.com/forms/d/e/1FAIpQLScahNoPlN4LeFc0kU8gi6nN8SxwXtdcTyGdrjYQG4CpBvQ7qw/viewform"
+                                >new form</a
+                            ></b
+                        >
+                        with the correct address.<br />
+                    </p>
+
+                    <p>
+                        <b>Only if the above address looks accurate</b>, click
+                        below to have the shipment manually processed.
+                    </p>
+                    <span
+                        style="
+                            box-shadow: inset 0px 1px 0px 0px #fce2c1;
+                            background-color: #ffc477;
+                            border-radius: 3px;
+                            border: 1px solid #eeb44f;
+                            display: inline-block;
+                            cursor: pointer;
+                            color: #ffffff;
+                            font-family: Arial;
+                            font-size: 15px;
+                            font-weight: bold;
+                            padding: 6px 24px;
+                            text-decoration: none;
+                            text-shadow: 0px 1px 0px #cc9f52; ;
+                        "
+                    >
+                        <a
+                            style="text-decoration: none; color: #ffffff"
+                            href="<?"
+                            ="reSubmitLink"
+                            ?
+                        >
+                            > Manually Proccess
+                        </a>
+                    </span>
+                    <p style="margin: 20px 0; line-height: 22px">
+                        Sincerely,<br />
+                        - Your IT Team
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="
+                        border-top: 1px solid #d8d8d8;
+                        padding: 25px;
+                        line-height: 22px;
+                    "
+                >
+                    This is an automatically generated message from your IT
+                    team. Replies are not monitored.
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="
+                        color: #4a4a4a;
+                        background: #d8d8d8;
+                        text-align: center;
+                        font-size: 14px;
+                        line-height: 22px;
+                        padding-bottom: 40px;
+                        padding-top: 40px;
+                    "
+                ></td>
+            </tr>
+        </table>
+    </body>
+</html>
