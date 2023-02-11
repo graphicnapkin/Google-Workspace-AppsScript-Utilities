@@ -8,7 +8,7 @@ Enabling you to easily fetch secrets from GCP Secrets Manager to use in your App
 -   Follow steps <a href="https://cloud.google.com/secret-manager/docs/create-secret-quickstart">here</a> to create new secrets inside a GCP project.
 -   On the `Permissions` tab click `Grant Access` and grant your users or groups access to this secret with the `Secret Manager Secret Accessor` role. This role will enable them to _only_ access this secret via API, not even through the GCP console. If you wish the to also have access via the console, add additional appropriate roles specific to your use case.
 
-# Step 1: Creating an Apps Script Library
+# Step 1: Creating an Internal AppsScript Library
 
 -   Create an apps script project at script.google.com.
 -   Click on the gear for settings and check the `Show "appsscript.json" manifest file in the editor` checkbox.
