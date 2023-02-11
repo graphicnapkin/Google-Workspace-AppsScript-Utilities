@@ -1,4 +1,4 @@
-# Google Apps Script Manager - GASM
+# Google AppsScript Secrets Manager - GASM
 
 Enabling you to easily fetch secrets from GCP Secrets Manager to use in your AppsScript projects.
 
