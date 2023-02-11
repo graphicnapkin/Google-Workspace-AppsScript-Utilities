@@ -50,4 +50,4 @@ function _byteToString(bytes) {
     return decodeURIComponent(result)
 }
 
-const baseUrl = 'https://secretmanager.googleapis.com/v2beta1/'
+const baseUrl = 'https://secretmanager.googleapis.com/v1/'
