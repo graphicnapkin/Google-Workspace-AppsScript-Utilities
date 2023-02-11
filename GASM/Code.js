@@ -21,7 +21,7 @@ function getSecret(secretsPath) {
 
     try {
         const url = `${baseUrl}${secretsPath}:access`
-        const params = { headers: authHeader, muteHttpExceptions: true }
+        const params = { headers: authHeader }
         response = JSON.parse(UrlFetchApp.fetch(url, params))
     } catch (err) {
         throw new Error(
