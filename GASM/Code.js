@@ -10,19 +10,18 @@ const baseUrl = 'https://secretmanager.googleapis.com/v1/'
  * @return {string} Requested Secret
  **/
 function getSecret(secretPath) {
-    let authHeader, response, secret
+    let headers, response, secret
 
     // Get's an auth token for the effective user (the account used to start the script that is leveraging this library)
     try {
-        authHeader = { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() }
+        headers = { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() }
     } catch (err) {
         throw new Error('Error generating OAuth Token: ' + err.toString())
     }
 
     try {
         const url = `${baseUrl}${secretPath}:access`
-        const params = { headers: authHeader }
-        response = JSON.parse(UrlFetchApp.fetch(url, params))
+        response = JSON.parse(UrlFetchApp.fetch(url, { headers }))
     } catch (err) {
         throw new Error(
             'Error fetching secret from GCP Secrets Manager: ' + err.toString()
