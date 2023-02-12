@@ -1,3 +1,5 @@
+const baseUrl = 'https://secretmanager.googleapis.com/v1/'
+
 /**
  * Returns secret from GCP Secret Manager. 
  * The structure of secretPath is:
@@ -48,4 +50,3 @@ function _byteToString(bytes) {
     return decodeURIComponent(result)
 }
 
-const baseUrl = 'https://secretmanager.googleapis.com/v1/'
