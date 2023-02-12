@@ -6,7 +6,7 @@
  * https://github.com/graphicnapkin/Google-Workspace-AppsScript-Utilities/blob/main/GASM/README.md
  * @param {string}
  * @return {string} Requested Secret
- */
+**/
 function getSecret(secretPath) {
     let authHeader, response, secret
 
