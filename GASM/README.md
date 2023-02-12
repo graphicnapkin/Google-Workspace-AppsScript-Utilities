@@ -32,7 +32,7 @@ Enabling you to easily fetch secrets from GCP Secrets Manager to use in your App
 
 # Motivation
 
-There is no clear path to storing API secrets inside Google AppsScript. Most projects will use either ScriptProperties or UserProperties. Script Properties can be seen clearly in the UI since the updated IDE launched. UserProperties are more obscured but it still doesn't align well with most organizations security practices and feels more like security through obscurity than a real robust solution. GCP has a great solution for this (Secrets Manager) and in discussion with a friend it seemed like a simple integration would not be that hard to implement.
+There is no clear path for securley storing API secrets inside Google AppsScript. Most projects will use either ScriptProperties or UserProperties. Script Properties can be seen clearly in the UI since the updated IDE launched. UserProperties are more obscured but it still doesn't align well with most organizations security practices and feels more like security through obscurity than a real robust solution. GCP has a great solution for this (Secrets Manager) and in discussion with a friend it seemed like a simple integration would not be that hard to implement.
 
 # Other Thoughts
 
