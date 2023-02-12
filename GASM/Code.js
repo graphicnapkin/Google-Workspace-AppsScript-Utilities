@@ -1,14 +1,14 @@
 const baseUrl = 'https://secretmanager.googleapis.com/v1/'
 
 /**
- * Returns secret from GCP Secret Manager. 
+ * Returns secret from GCP Secret Manager.
  * The structure of secretPath is:
  * `projects/${projectId}/secrets/${secretName}/versions/${versionNumber}`
- * For more details see: 
+ * For more details see:
  * https://github.com/graphicnapkin/Google-Workspace-AppsScript-Utilities/blob/main/GASM/README.md
  * @param {string}
  * @return {string} Requested Secret
-**/
+ **/
 function getSecret(secretPath) {
     let authHeader, response, secret
 
@@ -20,7 +20,7 @@ function getSecret(secretPath) {
     }
 
     try {
-        const url = `${baseUrl}${secretsPath}:access`
+        const url = `${baseUrl}${secretPath}:access`
         const params = { headers: authHeader }
         response = JSON.parse(UrlFetchApp.fetch(url, params))
     } catch (err) {
@@ -49,4 +49,3 @@ function _byteToString(bytes) {
 
     return decodeURIComponent(result)
 }
-
