@@ -12,7 +12,14 @@ const baseUrl = 'https://secretmanager.googleapis.com/v1/'
 function getSecret(secretPath) {
     let headers, response, secret
 
-    // Get's an auth token for the effective user (the account used to start the script that is leveraging this library)
+    if (!secretPath) {
+        throw new Error('A secretPath is required for this function.')
+    }
+
+    /*  
+        Get's an auth token for the effective user which is the account used
+        to start the script that is leveraging this library.
+    */
     try {
         headers = { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() }
     } catch (err) {
@@ -23,19 +30,30 @@ function getSecret(secretPath) {
         const url = `${baseUrl}${secretPath}:access`
         response = JSON.parse(UrlFetchApp.fetch(url, { headers }))
     } catch (err) {
+        const errorString = err.toString()
+        let message = errorString
+
+        if (errorString.includes('code 403')) {
+            message = `${Session.getEffectiveUser()} does not have access to ${secretPath} or secret does not exist.`
+        }
+
+        if (errorString.includes('code 404')) {
+            message = `Secret not found. secretPath provided: ${secretPath}`
+        }
+
+        throw new Error(message)
+    }
+
+    if (!response?.payload?.data) {
         throw new Error(
-            'Error fetching secret from GCP Secrets Manager: ' + err.toString()
+            `Invalid secrets contents. Response from secrets manager: ${JSON.stringify(
+                response
+            )}`
         )
     }
 
-    try {
-        const secretBytes = Utilities.base64Decode(response.payload.data)
-        secret = _byteToString(secretBytes)
-    } catch (err) {
-        throw new Error('Error decoding secrets payload: ' + err.toString())
-    }
-
-    return secret
+    const secretBytes = Utilities.base64Decode(response.payload.data)
+    return _byteToString(secretBytes)
 }
 
 function _byteToString(bytes) {
