@@ -1,15 +1,15 @@
+const baseUrl = 'https://secretmanager.googleapis.com/v1/'
+
 /**
- * Returns secret from GCP Secret Manager. To use this, you will need to create a GCP project, then a secret in Secrets Manager
- * The first part of the secrets path will be visible under the secret name and is found by creating the secret, clicking on the name of the secret.
- * On the same page you will see which version number you would like to access. The end result should be:
- * projects/\<project_id\>/secrets/\<secret_name\>/versions/\<version_number\>
- *
- * Access to each secret is granted by ensuring the account using this script has the "Secret Manager Secret Accessor"
- * permission for this secret in the GCP console.
+ * Returns secret from GCP Secret Manager. 
+ * The structure of secretPath is:
+ * `projects/${projectId}/secrets/${secretName}/versions/${versionNumber}`
+ * For more details see: 
+ * https://github.com/graphicnapkin/Google-Workspace-AppsScript-Utilities/blob/main/GASM/README.md
  * @param {string}
  * @return {string} Requested Secret
- */
-function getSecret(secretsPath) {
+**/
+function getSecret(secretPath) {
     let authHeader, response, secret
 
     // Get's an auth token for the effective user (the account used to start the script that is leveraging this library)
@@ -21,7 +21,7 @@ function getSecret(secretsPath) {
 
     try {
         const url = `${baseUrl}${secretsPath}:access`
-        const params = { headers: authHeader, muteHttpExceptions: true }
+        const params = { headers: authHeader }
         response = JSON.parse(UrlFetchApp.fetch(url, params))
     } catch (err) {
         throw new Error(
@@ -50,4 +50,3 @@ function _byteToString(bytes) {
     return decodeURIComponent(result)
 }
 
-const baseUrl = 'https://secretmanager.googleapis.com/v2beta1/'
