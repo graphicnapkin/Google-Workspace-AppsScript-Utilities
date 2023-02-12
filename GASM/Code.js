@@ -10,7 +10,7 @@ const baseUrl = 'https://secretmanager.googleapis.com/v1/'
  * @return {string} Requested Secret
  **/
 function getSecret(secretPath) {
-    let headers, response, secret
+    let headers, response
 
     if (!secretPath) {
         throw new Error('A secretPath is required for this function.')
