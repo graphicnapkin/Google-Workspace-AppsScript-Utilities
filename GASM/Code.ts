@@ -1,4 +1,43 @@
 /**
+ * useSecret provides a callback function a secret fetched from GCP Secrets Manager.
+ * The desired secret is found by the secretPath argument.
+ * The structure of secretPath is:
+ * `projects/${projectId}/secrets/${secretName}/versions/${versionNumber}`
+ * *
+ * The first argument of the callback function should be the fetched secret, followed
+ * by any additional arguments you pass in as normal.
+ * `(secret: string, ...args: any[]) => any)`
+ *
+ * For more details see:
+ * https://github.com/graphicnapkin/Google-Workspace-AppsScript-Utilities/blob/main/GASM/README.md
+ *
+ * @param {string} secretPath SecretPath is the path to the secret including version number.
+ * @param {function(string, ...any): any} callbackFunction Callback function that will use secret.
+ * @param {...any} callbackArguments Arguments to pass to callback function.
+ * @return {any}
+ **/
+function useSecret(
+    secretPath: string,
+    callbackFunction: (secret: string, ...args: any[]) => any,
+    ...callbackArguments: any[]
+): any {
+    const secret = getSecret(secretPath)
+    const response = callbackFunction(secret, ...callbackArguments)
+
+    /* 
+        This is a naive attempt to make this function more secure and encourage more secure patterns.
+    */
+    if (JSON.stringify(response).includes(secret)) {
+        throw new Error(
+            "Unsafe usage of useSecret's function. Response included the secrets content which " +
+                'should be avoided. If raw secret value is needed use the getSecret function.'
+        )
+    }
+
+    return response
+}
+
+/**
  * Returns secret value from GCP Secret Manager. This is UNSAFE and should be avoided where possible in favor of the useSecrets function.
  * The structure of secretPath is:
  * `projects/${projectId}/secrets/${secretName}/versions/${versionNumber}`
@@ -68,43 +107,4 @@ function _byteToString(bytes: number[]): string {
     }
 
     return decodeURIComponent(result)
-}
-
-/**
- * useSecret provides a callback function a secret fetched from GCP Secrets Manager.
- * The desired secret is found by the secretPath argument.
- * The structure of secretPath is:
- * `projects/${projectId}/secrets/${secretName}/versions/${versionNumber}`
- * *
- * The first argument of the callback function should be the fetched secret, followed
- * by any additional arguments you pass in as normal.
- * `(secret: string, ...args: any[]) => any)`
- *
- * For more details see:
- * https://github.com/graphicnapkin/Google-Workspace-AppsScript-Utilities/blob/main/GASM/README.md
- *
- * @param {string} secretPath SecretPath is the path to the secret including version number.
- * @param {function(string, ...any): any} callbackFunction Callback function that will use secret.
- * @param {...any} callbackArguments Arguments to pass to callback function.
- * @return {any}
- **/
-function useSecret(
-    secretPath: string,
-    callbackFunction: (secret: string, ...args: any[]) => any,
-    ...callbackArguments: any[]
-): any {
-    const secret = getSecret(secretPath)
-    const response = callbackFunction(secret, ...callbackArguments)
-
-    /* 
-        This is a naive attempt to make this function more secure and encourage safer patterns.
-    */
-    if (JSON.stringify(response).includes(secret)) {
-        throw new Error(
-            "Unsafe usage of useSecret's function. Response included the secrets content which " +
-                'should be avoided. If raw secret value is needed use the getSecret function.'
-        )
-    }
-
-    return response
 }
