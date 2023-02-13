@@ -1,7 +1,5 @@
-const baseUrl = 'https://secretmanager.googleapis.com/v1/'
-
 /**
- * Returns secret from GCP Secret Manager.
+ * Returns secret value from GCP Secret Manager. This is UNSAFE and should be avoided where possible in favor of the useSecrets function.
  * The structure of secretPath is:
  * `projects/${projectId}/secrets/${secretName}/versions/${versionNumber}`
  * For more details see:
@@ -13,6 +11,8 @@ function getSecret(secretPath: string): string {
     if (!secretPath) {
         throw new Error('A secretPath is required for this function.')
     }
+
+    const baseUrl = 'https://secretmanager.googleapis.com/v1/'
 
     /*  
         Get's an auth token for the effective user which is the account used
@@ -71,29 +71,40 @@ function _byteToString(bytes: number[]): string {
 }
 
 /**
- * Uses secret stored in GCP Secrets Manager with provided callback function.
- * Secret is referenced by the secretPath
+ * useSecret provides a callback function a secret fetched from GCP Secrets Manager.
+ * The desired secret is found by the secretPath argument.
  * The structure of secretPath is:
  * `projects/${projectId}/secrets/${secretName}/versions/${versionNumber}`
  * *
- * The callbacks first argument should be the secret that will be used.
+ * The first argument of the callback function should be the fetched secret, followed
+ * by any additional arguments you pass in as normal.
+ * `(secret: string, ...args: any[]) => any)`
+ *
  * For more details see:
  * https://github.com/graphicnapkin/Google-Workspace-AppsScript-Utilities/blob/main/GASM/README.md
- * @param {string} secretPath
- * @param {Function} callbackFunction
- * @param {any[]} callbackArguments
- * @return {*}
+ *
+ * @param {string} secretPath SecretPath is the path to the secret including version number.
+ * @param {function(string, ...any): any} callbackFunction Callback function that will use secret.
+ * @param {...any} callbackArguments Arguments to pass to callback function.
+ * @return {any}
  **/
 function useSecret(
     secretPath: string,
-    callbackFunction: (secret: string, ...args: any) => any,
-    callbackArguments: any[]
+    callbackFunction: (secret: string, ...args: any[]) => any,
+    ...callbackArguments: any[]
 ): any {
     const secret = getSecret(secretPath)
     const response = callbackFunction(secret, ...callbackArguments)
 
+    /* 
+        This is a naive attempt to make this function more secure and encourage safer patterns.
+    */
     if (JSON.stringify(response).includes(secret)) {
-        throw new Error('Function response included the secrets content')
+        throw new Error(
+            "Unsafe usage of useSecret's function. Response included the secrets content which " +
+                'should be avoided. If raw secret value is needed use the getSecret function.'
+        )
     }
+
     return response
 }
