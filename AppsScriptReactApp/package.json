@@ -1,0 +1,32 @@
+{
+    "name": "appsscriptreactapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "glogin": "clasp login",
+        "glogout": "clasp logout",
+        "gcreate": "clasp create --title 'ReactTestProject' --rootDir ./apps-script",
+        "gpull": "clasp pull",
+        "gpush": "clasp push",
+        "gstart": "clasp push --watch",
+        "start": "parcel src/index.html --dist-dir ./apps-script",
+        "build": "parcel build src/index.html --dist-dir ./apps-script"
+    },
+    "author": "jc",
+    "license": "ISC",
+    "devDependencies": {
+        "@google/clasp": "^2.4.2",
+        "@parcel/transformer-sass": "^2.8.3",
+        "@types/google-apps-script": "^1.0.57",
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "^18.0.10",
+        "parcel": "^2.8.3",
+        "process": "^0.11.10"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.8.1"
+    }
+}
