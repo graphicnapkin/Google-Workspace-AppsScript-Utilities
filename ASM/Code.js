@@ -1,4 +1,4 @@
-// Compiled using undefined undefined (TypeScript 4.9.5)
+// Compiled using clasp push (TypeScript 4.9.5)
 var __spreadArray =
     (this && this.__spreadArray) ||
     function (to, from, pack) {
