@@ -5694,12 +5694,28 @@ var _home = require("./components/Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
 var _nav = require("./components/Nav");
 var _navDefault = parcelHelpers.interopDefault(_nav);
+var _s = $RefreshSig$();
 function App() {
+    _s();
+    let [first, setFirst] = (0, _react.useState)(4);
+    // you would think this stores a string but NOPE
+    // it stores the result of the Apps Script function
+    // being called.
+    // I think whats happening here contents in between <? ?>
+    // is only being evaluated during the first render from
+    // doGet function, which means you won't be able to dynamically
+    // interact with them. I think the only really solution would be to
+    // move your apps script 'api' endpoints into a new script and
+    // deploy them as a API executable. You can use the getToken pattern
+    // below to call this API executable inside the react app.
+    const addNumberString = "<?= addNumbers(9) ?>";
+    console.log("welp", addNumberString);
+    const oAuthToken = "<?= getToken() ?>";
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default), {}, void 0, false, {
                 fileName: "src/App.tsx",
-                lineNumber: 10,
+                lineNumber: 25,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
@@ -5709,7 +5725,7 @@ function App() {
                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _homeDefault.default), {}, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/App.tsx",
-                        lineNumber: 12,
+                        lineNumber: 27,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -5717,7 +5733,7 @@ function App() {
                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutDefault.default), {}, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/App.tsx",
-                        lineNumber: 13,
+                        lineNumber: 28,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -5725,18 +5741,79 @@ function App() {
                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _homeDefault.default), {}, void 0, false, void 0, void 0)
                     }, void 0, false, {
                         fileName: "src/App.tsx",
-                        lineNumber: 14,
+                        lineNumber: 29,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/App.tsx",
-                lineNumber: 11,
+                lineNumber: 26,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Current User: ",
+                    "<?= getPerson() ?>"
+                ]
+            }, void 0, true, {
+                fileName: "src/App.tsx",
+                lineNumber: 31,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Token: ",
+                    oAuthToken
+                ]
+            }, void 0, true, {
+                fileName: "src/App.tsx",
+                lineNumber: 32,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Effective User: ",
+                    "<?= getSessionUser() ?>"
+                ]
+            }, void 0, true, {
+                fileName: "src/App.tsx",
+                lineNumber: 33,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                value: first,
+                type: "input",
+                onChange: (e)=>setFirst(parseInt(e.target.value))
+            }, void 0, false, {
+                fileName: "src/App.tsx",
+                lineNumber: 34,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Use Arguments from State Inline:",
+                    " ",
+                    "<?= addNumbers(" + first + ") ?>"
+                ]
+            }, void 0, true, {
+                fileName: "src/App.tsx",
+                lineNumber: 40,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Use Arguments statically set in react: ",
+                    "<?= addNumbers(9) ?>"
+                ]
+            }, void 0, true, {
+                fileName: "src/App.tsx",
+                lineNumber: 45,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true);
 }
+_s(App, "eSiPPegdRa+JqvjsmuloXABXjfs=");
 _c = App;
 exports.default = App;
 var _c;
