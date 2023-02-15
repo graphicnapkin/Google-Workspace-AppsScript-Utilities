@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import About from './components/About'
 import Home from './components/Home'
@@ -18,6 +18,13 @@ function App() {
     // below to call this API executable inside the react app.
     const addNumberString = '<?= addNumbers(9) ?>'
     console.log('welp', addNumberString)
+
+    // fetch / useEffect works as expected
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/todos/2')
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+    }, [])
 
     const oAuthToken = '<?= getToken() ?>'
     return (
