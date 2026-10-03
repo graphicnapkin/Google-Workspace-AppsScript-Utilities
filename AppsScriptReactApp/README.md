@@ -19,3 +19,5 @@ Two additional thoughts / tips.:
 Run `npm install`, then `npm run build -- --dist-dir ./build` to create a local preview. Serve the `build` folder with a static HTTP server. The preview shows Apps Script template expressions as literal text; they are evaluated only by Apps Script. Home/About navigation and the numeric input work locally.
 
 The presentation follows graphicnapkin's ivory, navy, and red palette with Inter and a system font fallback. Local review does not require the `gstart` or `gpush` commands.
+
+After building, run `node tests/no-token-display.cjs` to verify that neither the source nor the compiled UI embeds an OAuth token. Authorization remains managed by Apps Script; the UI shows only nonsensitive status text.
