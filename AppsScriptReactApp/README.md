@@ -20,4 +20,4 @@ Run `npm install`, then `npm run build -- --dist-dir ./build` to create a local 
 
 The presentation follows graphicnapkin's ivory, navy, and red palette with Inter and a system font fallback. Local review does not require the `gstart` or `gpush` commands.
 
-After building, run `node tests/no-token-display.cjs` to verify that neither the source nor the compiled UI embeds an OAuth token. Authorization remains managed by Apps Script; the UI shows only nonsensitive status text.
+After the local build above, run `node tests/no-token-display.cjs ./build/index.html` to verify that neither the source nor that freshly built UI embeds an OAuth token. For the default `npm run build` destination, run `node tests/no-token-display.cjs` to check `apps-script/index.html`. Authorization remains managed by Apps Script; the UI shows only nonsensitive status text.
