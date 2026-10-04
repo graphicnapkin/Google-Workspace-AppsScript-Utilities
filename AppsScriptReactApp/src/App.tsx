@@ -14,8 +14,7 @@ function App() {
     // doGet function, which means you won't be able to dynamically
     // interact with them. I think the only really solution would be to
     // move your apps script 'api' endpoints into a new script and
-    // deploy them as a API executable. You can use the getToken pattern
-    // below to call this API executable inside the react app.
+    // deploy them as an API executable.
     const addNumberString = '<?= addNumbers(9) ?>'
     console.log('welp', addNumberString)
 
@@ -26,7 +25,6 @@ function App() {
             .then((json) => console.log(json))
     }, [])
 
-    const oAuthToken = '<?= getToken() ?>'
     return (
         <>
             <Nav />
@@ -36,7 +34,7 @@ function App() {
                 <Route path="*" element={<Home />} />
             </Routes>
             <p>Current User: {'<?= getPerson() ?>'}</p>
-            <p>Token: {oAuthToken}</p>
+            <p>Authorization: Managed by Apps Script.</p>
             <p>Effective User: {'<?= getSessionUser() ?>'}</p>
             <input
                 value={first}

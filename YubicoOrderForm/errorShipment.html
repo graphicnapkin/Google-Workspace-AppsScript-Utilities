@@ -2,29 +2,35 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>a { color: #233876; } a:focus-visible { outline: 3px solid #ac3225; outline-offset: 6px; } img { max-width: 100%; height: auto; } li { overflow-wrap: anywhere; }</style>
     </head>
-    <body style="margin: 0; background: #d8d8d8">
+    <body style="margin: 0; background: #f4f1ea">
         <table
             style="
-                background: #d8d8d8;
+                background: #f4f1ea;
                 margin: 10px auto;
                 max-width: 640px;
-                font-family: 'Helvetica Neue', 'Open Sans', Helvetica, Arial,
+                font-family: Inter, Arial,
                     sans-serif;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
-                color: #4a4a4a;
+                color: #233876;
                 width: 100%;
                 border-spacing: 0;
-                background: white;
+                background: #f4f1ea;
+                border: 1px solid #233876;
+                border-radius: 16px;
+                font-size: 16px;
+                line-height: 1.6;
                 margin-bottom: 35px;
             "
         >
             <tr>
                 <th
                     style="
-                        border-bottom: 1px solid #1da1f2;
-                        padding: 50px 0 15px 0;
+                        border-bottom: 1px solid #ac3225;
+                        padding: 32px 0 24px 0;
                         text-align: center;
                     "
                 >
@@ -32,10 +38,10 @@
                 </th>
             </tr>
             <tr>
-                <td style="padding: 25px">
+                <td style="padding: 24px">
                     <h1
                         style="
-                            color: #bd0000;
+                            color: #ac3225;
                             font-weight: bold;
                             font-size: 28px;
                             text-align: center;
@@ -45,16 +51,16 @@
                     >
                         Error Processing Order
                     </h1>
-                    <p style="margin: 20px 0; line-height: 22px">
+                    <p style="margin: 24px 0; line-height: 26px">
                         Hello
                         <?=shipmentInfo['Legal First Name'][0]?>,
                     </p>
-                    <p style="margin: 20px 0; line-height: 22px">
+                    <p style="margin: 24px 0; line-height: 26px">
                         Your order has failed to process.<br />
                         <br />
                         <?=error?>
                     </p>
-                    <p style="margin: 20px 0; line-height: 22px">
+                    <p style="margin: 24px 0; line-height: 26px">
                         <b>Address Submitted:</b><br />
                     </p>
                     <ul>
@@ -108,19 +114,19 @@
                     </p>
                     <span
                         style="
-                            box-shadow: inset 0px 1px 0px 0px #fce2c1;
-                            background-color: #ffc477;
-                            border-radius: 3px;
-                            border: 1px solid #eeb44f;
+
+                            background-color: #ac3225;
+                            border-radius: 8px;
+                            border: 1px solid #ac3225;
                             display: inline-block;
                             cursor: pointer;
                             color: #ffffff;
-                            font-family: Arial;
+                            font-family: Inter, Arial, sans-serif;
                             font-size: 15px;
                             font-weight: bold;
-                            padding: 6px 24px;
+                            padding: 12px 24px;
                             text-decoration: none;
-                            text-shadow: 0px 1px 0px #cc9f52; ;
+                             ;
                         "
                     >
                         <a
@@ -132,7 +138,7 @@
                             > Manually Proccess
                         </a>
                     </span>
-                    <p style="margin: 20px 0; line-height: 22px">
+                    <p style="margin: 24px 0; line-height: 26px">
                         Sincerely,<br />
                         - Your IT Team
                     </p>
@@ -141,8 +147,8 @@
             <tr>
                 <td
                     style="
-                        border-top: 1px solid #d8d8d8;
-                        padding: 25px;
+                        border-top: 1px solid #233876;
+                        padding: 24px;
                         line-height: 22px;
                     "
                 >
@@ -153,8 +159,8 @@
             <tr>
                 <td
                     style="
-                        color: #4a4a4a;
-                        background: #d8d8d8;
+                        color: #233876;
+                        background: #f4f1ea;
                         text-align: center;
                         font-size: 14px;
                         line-height: 22px;

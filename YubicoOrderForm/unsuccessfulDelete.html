@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<!-- Compiled and minified CSS -->
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-/>
-
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <base target="_top" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" />
+        <style>
+            * { box-sizing: border-box; }
+            body { margin: 0; padding: 24px; background: #f4f1ea; color: #233876; font: 16px/1.6 Inter, Arial, sans-serif; }
+            main { max-width: 640px; margin: 64px auto; padding: 32px; border: 1px solid #233876; border-top: 3px solid #ac3225; border-radius: 16px; }
+            h2 { margin: 0 0 24px; font-size: 28px; line-height: 1.2; font-weight: 600; }
+            p { margin: 0; }
+            a { color: #233876; text-underline-offset: 4px; }
+            a:focus-visible { outline: 3px solid #ac3225; outline-offset: 6px; }
+            @media (max-width: 480px) { body { padding: 16px; } main { margin: 32px auto; padding: 24px; } }
+        </style>
     </head>
     <body>
-        <div class="container" style="height: 600px; position: relative">
-            <div
-                style="
-                    margin: 0;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    -ms-transform: translate(-50%, -50%);
-                    transform: translate(-50%, -50%);
-                "
-            >
-                <h2>Unable to cancel shipment...</h2>
+        <main>
+            <h2>Unable to cancel shipment...</h2>
                 <p>
                     Resubmit a
                     <a
@@ -32,7 +27,6 @@
                     >
                     with the correct address.
                 </p>
-            </div>
-        </div>
+        </main>
     </body>
 </html>
