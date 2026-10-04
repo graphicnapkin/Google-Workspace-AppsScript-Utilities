@@ -1,0 +1,20 @@
+flowchart TB
+ U["Workspace user or administrator"]
+ subgraph H["Hosted Google Workspace — configured permissions"]
+ A["Apps Script execution<br/>Authorized user / trigger identity"]
+ O["OAuth audit example<br/>Admin Directory reads"]
+ Y["Order-form example<br/>Form submission and shipment workflow"]
+ R["React web-app example<br/>HTML Service page"]
+ S[("Google Sheets<br/>Audit rows and order records")]
+ G["Gmail<br/>Order notifications"]
+ K["ASM example<br/>Secret Manager access"]
+ end
+ E["External APIs<br/>Shipment service / demo data"]
+ U --> A
+ A --> O --> S
+ A --> Y
+ Y --> S
+ Y --> G
+ Y -->|Configured API credentials| E
+ A --> R -->|Demo fetch| E
+ A --> K
